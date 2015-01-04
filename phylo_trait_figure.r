@@ -1,20 +1,5 @@
 
-read.phylo.data<-function(tree.file){
-  library(ape)
-  phy<-read.tree(tree.file)
-  return(phy)
-}
-
-combine.trait.data<-function(trait.file,tree){
-  temp<-list()
-  temp$traits<-trait.file
-  temp$phy<-tree
-  return(temp)
-}
-  
-  
-  
-phylo_fig<-function(phy2,out.df){
+phylo.fig<-function(phy2,out.df){
   library(ape)
   library(fields)
   #combine.trait.data(across.species.data,phy)

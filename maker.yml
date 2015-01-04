@@ -1,8 +1,9 @@
 sources:
+  - load_data.R
   - alba_barplot.R
-  - phylo_trait_figure.r
-  - fire_biplot.r
-  - threshold_fig.r
+  - phylo_trait_figure.R
+  - fire_biplot.R
+  - threshold_fig.R
 
 packages:
   - ape
@@ -21,7 +22,7 @@ targets:
       - output/figs/threshold_fig.pdf
 
   manipulation.experiment.data:
-    command: process_data_manipulation("fire_littersize_manipulation_data.txt")
+    command: process.data.manipulation("fire_littersize_manipulation_data.txt")
 
   phy:
     command: read.phylo.data("gymno_tree.txt")
@@ -30,7 +31,7 @@ targets:
     command: read.across.spp.data("across_species_fire_data.csv")
 
   output/figs/phy.pdf:
-    command: phylo_fig(phy,across.species.data)
+    command: phylo.fig(phy,across.species.data)
     plot: TRUE
 
   output/figs/threshold_fig.pdf:

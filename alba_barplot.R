@@ -1,11 +1,5 @@
 
-process_data_manipulation<-function(aa){
-  return(read.delim(aa))
-  aa$percent.sample.burned[is.na(aa$percent.sample.burned)]<-100
-  # get correct units for speed, changing from sec to cm / min
-  aa$speed.to.sensors<-6.25*60/aa$speed.to.sensors
-  return(aa)
-}
+
 
 make.barplot<-function(x,aa,yName){
   treat.mean<-tapply(x,aa[,1:2],mean,na.rm=TRUE)
@@ -28,38 +22,3 @@ alba.plot<-function(aa){
   legend("topleft",c("Cryptomeria","Cunninghamia"),fill=c("grey90","grey40"))
   #dev.off()
 }
-
-# 
-# mt<-lm(aa$maxtemp~aa$size*aa$species)
-# mta<-anova(mt)
-# mta$Sum/sum(mta$Sum)
-# 
-# mt<-lm(aa$temp.sum~aa$size*aa$species)
-# mta<-anova(mt)
-# mta
-# mta$Sum/sum(mta$Sum)
-# 
-# 
-# mt<-lm(aa$speed.to.sensors~aa$size*aa$species)
-# mta<-anova(mt)
-# mta
-# mta$Sum/sum(mta$Sum)
-# 
-# psb<-aa$percent.sample.burned/100
-# mt<-glm(psb~aa$size*aa$species,family=binomial)
-# mta<-anova(mt,test="Chisq")
-# mta
-# mta$Sum/sum(mta$Sum)
-# 
-# per.anova.test
-# 
-# 
-# anova(lm(aa$maxtemp~aa$size*aa$species))
-# anova(lm(aa$maxtemp~aa$size*aa$species))
-# anova(lm(aa$maxtemp~aa$size*aa$species))
-# 
-# 
-# x<-
-# 
-# dev.off()
-#mtext adds a label on the margin of the plot

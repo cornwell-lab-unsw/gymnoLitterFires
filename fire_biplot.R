@@ -1,8 +1,4 @@
 
-read.across.spp.data<-function(aa="across_species_fire_data.csv"){
-  fss<-read.csv(aa)
-  return(fss)
-}
 
 
 make.fire.biplot<-function(fss=fss){
