@@ -23,6 +23,6 @@ make.fire.biplot<-function(fss=fss){
   text (Rot[,1:2],rownames(Rot),col=1,cex=0.7)
   axis (3)
   axis (4)
-  legend("topleft",legend=c("Pinus spp.","cycads","other"),cex=0.7,pch=16,col=1:3)
+  #legend("topleft",legend=c("Pinus spp.","cycads","other"),cex=0.7,pch=16,col=1:3)
   #dev.off()
 }
