@@ -1,0 +1,22 @@
+.DS_Store
+
+# History files
+.maker
+.Rhistory
+
+
+# Example code in package build process
+*-Ex.R
+
+# R data files from past sessions
+.Rdata
+
+# RStudio files
+.Rproj.user/
+.Rproj.user
+*.Rproj
+
+# Figures for the moment
+output
+
+*.pdf
