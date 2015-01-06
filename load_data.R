@@ -12,7 +12,7 @@ combine.trait.data<-function(trait.file,tree){
 }
 
 process.data.manipulation<-function(aa){
-  return(read.delim(aa))
+  aa<-read.delim(aa)
   aa$percent.sample.burned[is.na(aa$percent.sample.burned)]<-100
   # get correct units for speed, changing from sec to cm / min
   aa$speed.to.sensors<-6.25*60/aa$speed.to.sensors
