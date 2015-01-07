@@ -1,4 +1,4 @@
-Reproducing the figures from Cornwell et al. *in press* 
+Reproducing the results from Cornwell et al. *in press* 
 ================
 
 The contents of this directory should allow you to access the data and recreate--on your own computer from the original data--the graphs from Cornwell et al. *in press* New Phytologist.  Reproducing these results will first require cloning this repository on your computer.  If you are new to git, it's a good idea to read more about git [here](http://r-pkgs.had.co.nz/git.html).
@@ -7,7 +7,7 @@ After you clone the repository, make sure the working directory for R is within 
 
 First install the required packages from CRAN:
 
-	install.packages(c("R6", "yaml", "digest","devtools","fields","ape"))
+	install.packages(c("R6","yaml","digest","devtools","fields","ape","markdown","knitr","heplots","car"))
 
 Download and install one additional package called maker from github.  
 
