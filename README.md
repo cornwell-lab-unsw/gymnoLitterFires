@@ -23,4 +23,4 @@ Here is a visualization of the workflow to get to these figures.  The entities a
 
 ![image](work_flow.png)
 
-The names of the functions that do each processing and graphics step can be found within the maker.yml file in the repository.  The functions themselves are in the .R files.  
+The names of the functions that do each processing and graphics step can be found within the maker.yml file in the repository.  The functions themselves are in the .R files.  There is also a knitr--produced file that shows the statistical analysis that goes into Table 2 from the main text.  
