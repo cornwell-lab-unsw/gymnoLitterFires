@@ -16,7 +16,11 @@
 .Rproj.user
 *.Rproj
 
-# Figures for the moment
+# Figures 
 output
+
+# markdown output
+Analysis.md
+Analysis.html
 
 *.pdf

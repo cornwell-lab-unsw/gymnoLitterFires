@@ -13,6 +13,7 @@ targets:
   all:
     depends:
       - figures
+      - Analysis.html
   
   figures:
     depends:
@@ -45,3 +46,10 @@ targets:
   output/figs/fire_biplot.pdf:
     command: make.fire.biplot(across.species.data)
     plot: TRUE
+
+  Analysis.md:
+    depends: manipulation.experiment.data
+    knitr: true
+
+  Analysis.html:
+    command: md2html("Analysis.md")

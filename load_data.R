@@ -24,3 +24,9 @@ read.across.spp.data<-function(aa="across_species_fire_data.csv"){
   return(fss)
 }
 
+md2html <- function(filename) {
+  library(markdown)
+  dest <- paste0(tools::file_path_sans_ext(filename), ".html")
+  opts <- setdiff(markdownHTMLOptions(TRUE), 'base64_images')
+  markdownToHTML(filename, dest, options=opts)
+}

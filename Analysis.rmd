@@ -1,74 +1,64 @@
 ---
-output: html_document
+output: pdf_document
 ---
 
-# Code that reproduces and explains in more the tables within Cornwell er al. (in press) New Phytologist
+# Code that reproduces and explains Table 2 within Cornwell er al. (in press) New Phytologist
 
-A quote:
-  
-  > Markdown is not LaTeX.
+This code will load and reproduce the data in the tables for Cornwell et al. For more details see the [github repository](https://github.com/cornwell-lab-unsw/gymnoLitterFires).
 
-To compile me, run this in R:
-  
-  library(knitr)
-knit('001-minimal.Rmd')
-
-See [output here](https://github.com/yihui/knitr-examples/blob/master/001-minimal.md).
-
-## code chunks
-
-A _paragraph_ here. A code chunk below (remember the three backticks):
-  
-  ```{r}
-1+1
-.4-.7+.3 # what? it is not zero!
-```
-
-## graphics
-
-It is easy.
-
-```{r}
-plot(1:10)
-hist(rnorm(1000))
-```
-
-## inline code
-
-Yes I know the value of pi is `r pi`, and 2 times pi is `r 2*pi`.
-
-## math
-
-Sigh. You cannot live without math equations. OK, here we go: $\alpha+\beta=\gamma$. Note this is not supported by native markdown. You probably want to try RStudio, or at least the R package **markdown**, or the function `knitr::knit2html()`.
-
-## nested code chunks
-
-You can write code within other elements, e.g. a list
-
-1. foo is good
-```{r}
-strsplit('hello indented world', ' ')[[1]]
-```
-2. bar is better
-
-
+Before we start we have to load a few packages and utility functions:
 
 ```{r}
 source("load_data.R")
-library(lsr)
-alba<-process.data.manipulation("fire_littersize_manipulation_data.txt")
-mod<-lm(maxtemp~species*size,data=alba)
-
-etaSquared(mod)
-
-alba$prop.b<-alba$percent.sample.burned/100
-
-mod<-glm(   prop.b~species*size,data=alba,        family=binomial(logit))
-
-etaSquared(mod)
-anova(mod,test="Chisq")
+library(heplots)
 ```
 
-## conclusion
+## Load data
 
-Nothing fancy. You are ready to go. When you become picky, go to the [knitr website](http://yihui.name/knitr/).
+Then we can load the data.  The data in the tables comes from the litter size manipulation experiment.  
+
+```{r}
+alba<-process.data.manipulation("fire_littersize_manipulation_data.txt")
+```
+
+It's called alba because Alba Elvira (co-author and Erasmus student from University of Barcelona) managed these meso-scale burns.  
+
+##Statistical analysis
+
+These are mostly standard linear models.  Within the paper we report the significance of each factor and a measure of effect size see Cohen (1992).
+
+### Max temperature
+```{r}
+maxtemp.mod<-lm(maxtemp~species*size,data=alba)
+etasq(maxtemp.mod,anova=T)
+```
+
+### Temp sum
+```{r}
+temp.sum.mod<-lm(temp.sum~species*size,data=alba)
+etasq(temp.sum.mod,anova=T)
+```
+
+### Fire front speed
+```{r}
+front.speed.mod<-lm(speed.to.sensors~species*size,data=alba)
+etasq(front.speed.mod,anova=T)
+```
+
+### Total burning time
+```{r}
+total.burning.time.mod<-lm(total.burning.time~species*size,data=alba)
+etasq(total.burning.time.mod,anova=T)
+```
+
+### Proportion of sample burned
+
+Becasue this response variable is a proportion, we use a logit link function (using a logit link with proportion data throws a warning in R, but see discussion of this issue in Warton and Hui 2011).
+
+```{r}
+options(warn=-1)
+alba$prop.b<-alba$percent.sample.burned/100
+prob.burned.mod<-glm(prop.b~species*size,data=alba,family=binomial(logit))
+etasq(prob.burned.mod,anova=F,test="F")
+anova(prob.burned.mod,test="Chisq")
+```
