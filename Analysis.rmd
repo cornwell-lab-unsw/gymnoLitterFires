@@ -2,15 +2,16 @@
 output: pdf_document
 ---
 
-# Code that reproduces and explains Table 2 within Cornwell er al. (in press) New Phytologist
+## Code that reproduces and explains Table 2 within Cornwell er al. (in press) New Phytologist
 
 This code will load and reproduce the data in the tables for Cornwell et al. For more details see the [github repository](https://github.com/cornwell-lab-unsw/gymnoLitterFires).
 
-Before we start we have to load a few packages and utility functions:
+Before we start we have to load a packages and a few utility functions that we use to load the raw data into R:
 
 ```{r}
 source("load_data.R")
 library(heplots)
+library(car)
 ```
 
 ## Load data
@@ -21,11 +22,11 @@ Then we can load the data.  The data in the tables comes from the litter size ma
 alba<-process.data.manipulation("fire_littersize_manipulation_data.txt")
 ```
 
-It's called alba because Alba Elvira (co-author and Erasmus student from University of Barcelona) managed these meso-scale burns.  
+It's called alba because Alba Elvira (co-author and Erasmus student from University of Barcelona) managed these meso-scale burns and also cut all the litter into meticulously sized pieces.  
 
-##Statistical analysis
+## Statistical analysis
 
-These are mostly standard linear models.  Within the paper we report the significance of each factor and a measure of effect size see Cohen (1992).
+These are mostly standard linear models.  Within the paper we report the significance of each factor and a measure of effect size see Cohen (1992).  Species is the two different species in the manipulation experiments--*Cryptomeria* and *Cunninghamia*.  Size is the manipulated size with four categories.  Each code block below shows the linear model and some summary statistics for one of the fire response variable.  
 
 ### Max temperature
 ```{r}
