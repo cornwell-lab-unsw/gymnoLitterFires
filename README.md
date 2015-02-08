@@ -11,11 +11,11 @@ First install the required packages from CRAN:
 
 Download and install one additional package called maker from github.  
 
-	devtools::install_github("richfitz/maker")
+	devtools::install_github("richfitz/remake")
 
 Load that package, and run a R specific "makefile"
 
-	maker::make()
+	remake::make()
 	
 This script will call R code that loads the data, does various analyses and, makes the figures. The script will place the figures in a folder called "output/figs" within the working directory.  
 

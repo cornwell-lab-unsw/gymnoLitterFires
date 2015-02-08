@@ -1,7 +1,7 @@
 .DS_Store
 
 # History files
-.maker
+.remake/
 .Rhistory
 
 
