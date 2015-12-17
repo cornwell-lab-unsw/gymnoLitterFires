@@ -8,6 +8,7 @@ sources:
 packages:
   - ape
   - fields
+  - heplots
 
 targets:
   all:
